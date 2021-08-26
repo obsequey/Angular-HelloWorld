@@ -12,4 +12,4 @@ RUN npm run build
 COPY . .
 
 EXPOSE 4200
-CMD npm run start
+CMD npm run browser
