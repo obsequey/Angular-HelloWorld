@@ -11,5 +11,5 @@ RUN npm run build
 
 COPY . .
 
-EXPOSE 4200
+EXPOSE 8080
 CMD npm run browser
