@@ -12,7 +12,7 @@ pipeline {
       steps {
         sh 'docker build . -t localhost:5000/angular-helloworld'
         sh 'docker push localhost:5000/angular-helloworld'
-        sh 'docker run -p 4200:4200 localhost:5000/angular-helloworld'
+        sh 'docker run -d --rm --name angular-helloworld -p 4200:4200 localhost:5000/angular-helloworld'
       }
     }
   }
