@@ -2,10 +2,12 @@ pipeline {
   agent any
   environment {
     GIT_REPO_NAME = env.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1')
+    SOME_SECRET_KEY = credentials('some-secret-key')
   }
   stages {
     stage('Package Docker container') {
       steps {
+        sh 'echo $SOME_SECRET_KEY'
         sh 'docker build . -t "localhost:5000/angular-helloworld:${GIT_REPO_NAME}.${BRANCH_NAME}.${BUILD_NUMBER}"'
         sh 'docker push localhost:5000/angular-helloworld'
         sh 'docker stop angular-helloworld || true'
