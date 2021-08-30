@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Package Docker container') {
       steps {
-        sh 'echo $SOME_SECRET_KEY'
+        sh 'echo ${SOME_SECRET_KEY}'
         sh 'docker build . -t "localhost:5000/${IMAGE_NAME}:${GIT_REPO_NAME}.${BRANCH_NAME}.${BUILD_NUMBER}"'
         sh 'docker push localhost:5000/${IMAGE_NAME}'
         sh 'docker stop ${IMAGE_NAME} || true'
