@@ -2,7 +2,7 @@ pipeline {
   agent any
   environment {
     GIT_REPO_NAME = env.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1')
-    SOME_SECRET_KEY = credentials('some-secret-key') || 'no key'
+    SOME_SECRET_KEY = credentials('some-secret-key')
     IMAGE_NAME = 'angular-helloworld'
   }
   stages {
